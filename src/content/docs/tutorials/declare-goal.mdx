@@ -1,0 +1,39 @@
+---
+title: Declare a goal and record dispatch
+description: Register a versioned binding, submit a goal, inspect pending outcome, and recover accepted state.
+---
+
+import { Code } from '@astrojs/starlight/components';
+import example from '../../../../examples/declare_goal.py?raw';
+
+This tutorial extends the native artifact round trip with a registered binding, a one-task goal, dispatch acceptance, and goal recovery after reopening.
+
+## Prerequisites and result
+
+Complete [Installation](../../getting-started/installation/) and understand the [first native tutorial](../native-runtime/). Use the same Python/POSIX requirements.
+
+Dispatch records accepted execution work. It does not run a physical handler. The example uses demonstration digests for declared handler identity and asserts that the technical outcome remains pending.
+
+## Run the complete program
+
+Save this as `declare_goal.py` and run `python declare_goal.py` in the compatible SDK environment.
+
+<Code code={example} lang="python" title="declare_goal.py" />
+
+Expected output:
+
+```text
+Artifact published.
+Goal accepted; execution recorded. No handler was launched.
+Artifact recovered after reopening.
+Hello, AgentFabric!
+Accepted goal recovered after reopening.
+```
+
+## Understand the accepted state
+
+`AgentBinding` registers pinned handler references and a signals-mode decision actor. `GoalSpec` supplies readable input, ordered tasks, explicit budgets/output limits, and a deadline. The program reads the current goal version before dispatching and verifies pending outcome availability.
+
+Reopening preserves the accepted specification and execution identity. The example removes its temporary state on exit. It performs no handler resolution, external action, agent assessment, or physical process termination.
+
+Continue with [Declare and inspect a goal](../../guides/goals/), [Decisions](../../runtime/decisions/), and [Goal reference](../../reference/goals/).

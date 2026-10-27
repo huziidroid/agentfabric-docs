@@ -1,0 +1,53 @@
+---
+title: Store and recover your first artifact
+description: Open native SQLite services, bootstrap a trusted identity, publish bytes, and recover them after reopening.
+---
+
+import { Code } from '@astrojs/starlight/components';
+import example from '../../../../examples/native_runtime.py?raw';
+
+You will publish a small artifact, close Runtime, reopen the same database, recover the saved publication, and read the original bytes. This exercises implemented native SDK behavior; it does not launch a handler.
+
+## Prerequisites
+
+- A compatible source installation from [Installation and compatibility](../../getting-started/installation/).
+- Python 3.12 or newer on macOS or Linux.
+- Permission to create private directories and files in your temporary directory.
+
+## Run the example
+
+Save this complete program as `native_runtime.py` in your working directory. It creates its own temporary state and does not require editing paths or supplying credentials.
+
+<Code code={example} lang="python" title="native_runtime.py" />
+
+Run it in the Python environment where you installed Runtime:
+
+```sh
+python native_runtime.py
+```
+
+Expected output:
+
+```text
+Artifact published.
+Artifact recovered after reopening.
+Hello, AgentFabric!
+```
+
+## What happened?
+
+1. `Namespace` established the application and owner boundary. It did not authenticate the caller.
+2. Explicit storage paths, byte limits, read limits, and authority configuration were supplied. The program resolved filesystem aliases and created mode `0700` directories.
+3. `Runtime.open_sqlite()` opened native services. It did not issue a credential implicitly.
+4. The trusted host bootstrapped a management credential into private recoverable storage. The program never printed the bearer secret.
+5. `put_bytes()` published content with a request ID and a ten-minute retention deadline.
+6. All operations finished before the first Runtime closed. Reopening used the same storage binding and policy.
+7. `recover_publication()` recovered the saved request without resupplying bytes. `ContentReference` pinned the recovered ID and digest for `read()`.
+
+## Cleanup
+
+The program removes its temporary state when it exits. To keep application state in a real integration, supply persistent private directories and manage artifact retention explicitly. Do not keep credentials or runtime state in your source repository.
+
+## Continue learning
+
+Read [Runtime ownership and durable state](../../runtime/durability/), [Identities and credentials](../../runtime/identities/), and [Artifacts and storage](../../runtime/artifacts/). Use [Open and close Runtime](../../guides/runtime-lifecycle/) when integrating the SDK into an application host.

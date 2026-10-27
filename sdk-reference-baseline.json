@@ -1,0 +1,32 @@
+{
+  "status": "unreleased working-tree preview; HEAD alone does not reproduce these APIs",
+  "recorded_date": "2026-10-27",
+  "parent_commit": "cc77b8a58ca8a137a70e447155374a5e1a149bce",
+  "source_sha256": {
+    "core/schemas.py": "ead9b9fae94f904d5a31621821c9cb460a663829dad89db2361cdf8cb12ee87c",
+    "core/identity.py": "7caae3d4da19b9342a2245c0a9bab066cb487b44f5e38e256a77f2548e537b4e",
+    "artifacts/schemas.py": "b986d96e89e0a6602f3e5608fdb5d51c1fb9623ba7bdbffb0fdb85fbae8d461a",
+    "artifacts/interfaces.py": "d9af36a519f63c2d095ee0f2964690c09761327c8b1039ba526a6698b0c33596",
+    "services/artifact_service.py": "84f745c8a20e70f0f25c3d36353d9a7e7e67603f693232b857a78a3961d0b4f3",
+    "services/transactions.py": "74e18a7f2f681696e0b6318596db18a05f67bf1e400e7e8d787e8850f312f053",
+    "permissions/schemas.py": "387ad2dfcf3ffafbf3dccef7b86444bbd016bd023bb992be648bc822e0a216bd",
+    "goals/schemas.py": "1358c017a1a0edd26de5439bfe2e9a8c061f1b077665d23ceb1a2f4912446d99",
+    "goals/invocations.py": "2f9dd8f0755a155a5c572a59f23e5379bc006e594b707b97d1b9756fb6bd0fbd",
+    "operations/schemas.py": "a1b03474f2732858ff2d17abed0afa02825f4a688a4ebb96c2d64d2054e3da7a",
+    "operations/interfaces.py": "64fac7cf3a4945f5c62808d624b23118346364bd405ff2acb5d1f3de011b17e1",
+    "environments/schemas.py": "42c4955009096e8f00125a3faed82c067d15d9443b0c8be257311daadb1ad922",
+    "environments/client.py": "5bdce30b1c913aa4f7409d629c941af8d11701a61ff84d65934da7350333d084",
+    "execution/contracts.py": "dc9c822142b3d376008b46711f734fdd48494e3794152cb20d94d132bd84dbde",
+    "execution/schemas.py": "883c14d98a9530030327441d2d32ca2f510888dd77be3c8081751188a65195c4",
+    "execution/scheduling_schemas.py": "3950bc7501abfb7e435c0eef5656c5fd1e369b33cbfb9da2749aa8ef5194fe21",
+    "execution/interfaces.py": "15c3c9a7d22f96d060b20488c9a846228de3b7797020b02918359d5840bc24dd",
+    "environments/interface.py": "b94c2df76bf6c5fb36386afa5ab19d03e9e8b711c82ed8981ed46f411b66bc5e",
+    "runtime.py": "ea47951a881c9dac28668691eda1fa0e2bcce0711e90bcf1fb95fe2884ac5c64",
+    "storage/repositories/credential_repo.py": "f1e561cca2cce82803d4453c7f442ec8e264b664c2b64059a2d10f63108cfc1d",
+    "permissions/interfaces.py": "c85d88deb568d95a7eed54e0dda65899b136ad92411fcc7744d234f1af1d3910",
+    "storage/provider_credentials.py": "f783586449d3baa9b8c399b23478a2fa5f3d1e5a5e9dc4a9b19bb330de7eca10",
+    "services/goals.py": "c5a9bb21d73253c29b613185ef55d2a8d49e3e1b99ff73909ea2b5c23765ca98",
+    "goals/interfaces.py": "1a23ab5c47ea7037d5c609e9d1e1db559541f25f6a021c3e7d6edda873ac7983",
+    "services/task_coordinator.py": "3a4df4959af9836d855da2a887753d7958c8badeae12e36eda1ad3978c72fe36"
+  }
+}

@@ -1,0 +1,36 @@
+---
+title: AgentFabric documentation
+description: Build applications with durable goals, ordered tasks, and explicit authority.
+template: splash
+hero:
+  title: Build agents. Keep control of the work.
+  tagline: Learn how AgentFabric separates agent behavior from durable coordination, execution, and application-owned permissions.
+  actions:
+    - text: Start here
+      link: ./getting-started/introduction/
+      icon: right-arrow
+    - text: Explore Runtime
+      link: ./getting-started/runtime-overview/
+      variant: secondary
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <Card title="Durable progress" icon="document">
+    Model work as goals and ordered tasks. Track execution attempts, outcomes, and decisions over time.
+  </Card>
+  <Card title="Application-owned authority" icon="approve-check">
+    Your application controls identity, permission policy, and access to external resources.
+  </Card>
+  <Card title="Agent-defined behavior" icon="setting">
+    Your agents supply handlers and business judgments. Runtime validates and records the resulting actions.
+  </Card>
+  <Card title="A modular platform" icon="puzzle">
+    Runtime is the foundation. AgentCLI and Fabric have distinct roles in the wider platform.
+  </Card>
+</CardGrid>
+
+:::note[Early access]
+AgentFabric is under active development. Read [current capabilities](./runtime/capabilities/) to understand available behavior and remaining work.
+:::
