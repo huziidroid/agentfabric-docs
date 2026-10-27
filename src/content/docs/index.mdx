@@ -1,15 +1,15 @@
 ---
 title: AgentFabric documentation
-description: Build applications with durable goals, ordered tasks, and explicit authority.
+description: Meet AgentFabric, the platform for building AI workers that carry out useful work.
 template: splash
 hero:
-  title: Build agents. Keep control of the work.
-  tagline: Learn how AgentFabric separates agent behavior from durable coordination, execution, and application-owned permissions.
+  title: Build AI workers that get work done.
+  tagline: AgentFabric helps you build AI workers for research, reports, and everyday tasks. You define their work and decide what information and tools they can use.
   actions:
-    - text: Start here
+    - text: Meet AgentFabric
       link: ./getting-started/introduction/
       icon: right-arrow
-    - text: Explore Runtime
+    - text: Meet AgentFabric Runtime
       link: ./getting-started/runtime-overview/
       variant: secondary
 ---
@@ -17,20 +17,20 @@ hero:
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <CardGrid>
-  <Card title="Durable progress" icon="document">
-    Model work as goals and ordered tasks. Track execution attempts, outcomes, and decisions over time.
+  <Card title="Define the work" icon="document">
+    Give your worker a purpose and break the work into clear steps.
   </Card>
-  <Card title="Application-owned authority" icon="approve-check">
-    Your application controls identity, permission policy, and access to external resources.
+  <Card title="Control access" icon="approve-check">
+    Decide which information, accounts, and tools your workers may use.
   </Card>
-  <Card title="Agent-defined behavior" icon="setting">
-    Your agents supply handlers and business judgments. Runtime validates and records the resulting actions.
+  <Card title="Keep track of progress" icon="setting">
+    Use AgentFabric Runtime to record planned steps, results, and requests for input.
   </Card>
-  <Card title="A modular platform" icon="puzzle">
-    Runtime is the foundation. AgentCLI and Fabric have distinct roles in the wider platform.
+  <Card title="Explore the platform" icon="puzzle">
+    Start with Runtime. Learn how AgentCLI and Fabric fit into the wider platform being built.
   </Card>
 </CardGrid>
 
 :::note[Early access]
-AgentFabric is under active development. Read [current capabilities](./runtime/capabilities/) to understand available behavior and remaining work.
+AgentFabric is still being built. These docs introduce the platform and the current Runtime library for developers. Read [current capabilities](./runtime/capabilities/) to see what is available today and what is still planned.
 :::

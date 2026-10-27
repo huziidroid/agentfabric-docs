@@ -1,37 +1,42 @@
 ---
-title: Runtime at a glance
-description: Understand the boundary between your application, your agent, and Runtime.
+title: AgentFabric Runtime
+description: Keep track of an AI worker's work, progress, results, and access.
 ---
 
-AgentFabric Runtime is a Python SDK for recording application-defined goals and ordered tasks, enforcing application-owned authority, and preserving progress across restarts.
+**Keep track of the work, every step of the way.**
 
-## Who owns what?
+AgentFabric Runtime is the part of AgentFabric that keeps a record of an AI worker's work. It tracks planned steps, records results, checks access, and manages pauses for input or approval.
 
-| Your application and agent provide | Runtime provides |
+Your application defines the work. Your AI worker supplies the behavior and judges the results. Runtime provides the structure for tracking those steps and checking whether the next step is allowed.
+
+## What Runtime helps you keep track of
+
+| What you need to know | What Runtime records or checks |
 | --- | --- |
-| Requested outcomes and ordered task definitions | Durable goal and task records |
-| Versioned handler references and agent behavior | Validation of accepted work and decisions |
-| Identity bootstrap and permission policy | Enforcement of configured authority |
-| Business judgments about task results | Outcome records and validated transitions |
-| Storage locations and resource limits | Native SQLite state and local artifact storage |
+| What are we trying to achieve? | The requested outcome and its planned steps. |
+| What has happened so far? | Accepted work, recorded results, and decisions. |
+| What are we waiting for? | Requests for user input, permission, or a timer. |
+| May this worker access that resource? | Access against the rules supplied by your application. |
+| What was saved before the application restarted? | Stored work and progress that the application can inspect after reopening. |
 
-Runtime does not interpret a natural-language goal or invent a plan to achieve it.
+Saved progress does not automatically restart a worker. Your application still controls how work is carried out and continued.
 
-## The coordination cycle
+## Example: keeping a report on track
 
-1. Register a versioned agent binding and submit a goal.
-2. Runtime validates and records the declared work.
-3. Dispatch accepts an execution for the current task.
-4. A trusted executor records a return; outcome coordination verifies the recorded work.
-5. The agent assesses the result and submits a decision.
-6. Runtime validates the decision and records the next transition.
+In a reporting application, the plan might be to gather data, analyze it, and write a report. Runtime holds that plan and the recorded progress. The worker supplies the analysis; your application decides which data it may use.
 
-:::caution[Execution support]
-The current public dispatch path records accepted execution work; it does not run a handler. Physical execution and termination guarantees remain unfinished. This cycle explains the coordination model, not an available end-to-end runner.
+If a step needs a decision from you, the application can record a wait. After the input is resolved, the worker's next decision and the application's next action are checked separately. Receiving an answer does not silently start more work.
+
+:::caution[What is available today]
+The current Runtime library can save plans, accept work, and record supported results and decisions. It does not yet run the worker's code itself. The reporting example explains how the parts fit together, rather than demonstrating a complete running agent.
 :::
 
-## Integration requirements
+## For developers
 
-The SDK requires Python 3.12 or newer. Native storage uses SQLite and application-owned local directories. Your host supplies explicit limits and authority policy.
+Runtime is a Python library for developers, also called a software development kit (SDK). It is currently available as an unreleased source preview. Its current native setup uses SQLite for saved state and local files for content. Your application supplies storage locations, access rules, and resource limits.
 
-This site does not yet provide a verified package-index install command or a complete runnable agent tutorial. Use the [capability guide](../../runtime/capabilities/) to assess readiness.
+- Read [current capabilities](../../runtime/capabilities/) before planning an integration.
+- Follow [Installation](../installation/) and the [first artifact tutorial](../../tutorials/native-runtime/) to try implemented SDK behavior.
+- Explore [core concepts](../../runtime/concepts/) when you are ready for the technical details.
+
+Runtime stores and checks the work you define. The application and worker still provide the plan, the code, and the decisions about whether the result meets your needs.

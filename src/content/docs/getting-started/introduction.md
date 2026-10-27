@@ -1,30 +1,34 @@
 ---
-title: Introduction
-description: What AgentFabric is and how its components fit together.
+title: Meet AgentFabric
+description: Build AI workers for useful tasks, with control over their work and access.
 ---
 
-AgentFabric is a platform for defining, running, coordinating, and hosting versioned AI workers that perform work for users.
+**Build AI workers that get work done.**
 
-Your application supplies agent behavior, requested outcomes, and permission policy. Runtime records goals and ordered tasks, enforces authority boundaries, and preserves progress. The agent supplies judgments about the results and what should happen next.
+AgentFabric is a platform for building AI workers that carry out useful tasks, such as researching a topic, preparing a report, or processing documents.
 
-## Platform components
+An AI worker is software that uses AI to perform work on someone's behalf. With AgentFabric, you define what the worker should do and decide what information and tools it can access.
 
-| Component | Responsibility |
+The platform is being developed to bring those workers, their work, and their progress together. These docs currently focus on its foundation: **AgentFabric Runtime**.
+
+## One platform, distinct roles
+
+| Part of AgentFabric | What it is for |
 | --- | --- |
-| **Runtime** | Durable goals, tasks, decisions, waits, recovery, and enforcement of external access. |
-| **AgentCLI** | Define workers and harness their reasoning, planning, and task execution from a command line. |
-| **Fabric** | Coordinate workers, communication, and delegated work. |
+| **AgentFabric Runtime** | Keep a record of the work, track its steps and results, and check access. |
+| **AgentCLI** | Define and work with AI workers through a command-line interface. |
+| **Fabric** | Help multiple workers communicate and work together. |
 
-These describe intended platform responsibilities. This documentation currently focuses on Runtime.
+These are the roles of the platform's parts, rather than a list of released products. See [current capabilities](../../runtime/capabilities/) for what is implemented today.
 
-## Example: preparing a report
+## Example: a sales report
 
-An application receives a request for a sales report. It declares a goal and tasks for reading data, analyzing it, and creating a document. The application grants access to the relevant source.
+Imagine asking a reporting worker to prepare this month's sales report. The work involves gathering sales data, analyzing it, and creating a document.
 
-The agent supplies task behavior and assesses results. Runtime tracks progress and validates requests to continue, revise pending work, or wait for input. Sending the report through an email account requires the applicable external permission.
+You decide which sales account the worker may access. Runtime keeps the plan and the recorded results. If the work needs your input or more access, that dependency can be recorded before the next step proceeds.
 
-This is a product example, not an executable tutorial. Check [current capabilities](../../runtime/capabilities/) before planning an integration.
+This illustrates the intended platform experience. A complete reporting worker that runs from start to finish is not supplied by the current Runtime library.
 
-## Where to begin
+## Start with Runtime
 
-Read [Runtime at a glance](../runtime-overview/), then learn the [core concepts](../../runtime/concepts/).
+Meet [AgentFabric Runtime](../runtime-overview/) to understand how it supports the work. If you are ready to try the developer tools, follow [Installation](../installation/) and the [first artifact tutorial](../../tutorials/native-runtime/).
